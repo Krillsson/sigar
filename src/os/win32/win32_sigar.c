@@ -1747,7 +1747,7 @@ SIGAR_DECLARE(int) sigar_proc_env_get(sigar_t *sigar, sigar_pid_t pid,
                 return ERROR_NOT_ENOUGH_MEMORY;
             }
 
-            retval =
+            retval = 
                 GetEnvironmentVariable(temp_key, value, sizeof(value));
 
             SIGAR_SAFE_FREE(temp_key);
@@ -2950,7 +2950,7 @@ sigar_net_interface_list_get(sigar_t *sigar,
     }
 
     for (i=0; i<ift->dwNumEntries; i++) {
-        char name[16];
+        char name[MAX_INTERFACE_NAME_LEN];
         int key;
         MIB_IFROW *ifr = ift->table + i;
         sigar_cache_entry_t *entry;
@@ -3855,7 +3855,7 @@ static int sigar_who_wts(sigar_t *sigar,
         }
 
         SIGAR_SSTRCPY(who->device, temp_station_name);
-
+        
         SIGAR_SAFE_FREE(temp_station_name);
 
         buffer = NULL;
