@@ -23,10 +23,6 @@
 
 #include <limits.h>
 
-#ifndef MAX_INTERFACE_NAME_LEN
-#define MAX_INTERFACE_NAME_LEN 256
-#endif
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -538,7 +534,7 @@ typedef struct {
 
 typedef struct {
     char default_gateway[SIGAR_INET6_ADDRSTRLEN];
-    char default_gateway_interface[MAX_INTERFACE_NAME_LEN];
+    char default_gateway_interface[16];
     char host_name[SIGAR_MAXHOSTNAMELEN];
     char domain_name[SIGAR_MAXDOMAINNAMELEN];
     char primary_dns[SIGAR_INET6_ADDRSTRLEN];
@@ -565,7 +561,7 @@ typedef struct {
         mtu,
         window,
         irtt;
-    char ifname[MAX_INTERFACE_NAME_LEN];
+    char ifname[16];
 } sigar_net_route_t;
 
 typedef struct {
@@ -611,7 +607,7 @@ SIGAR_DECLARE(int) sigar_net_route_list_destroy(sigar_t *sigar,
 #define SIGAR_IPV6_ADDR_COMPATv4   0x0080
 
 typedef struct {
-    char name[MAX_INTERFACE_NAME_LEN];
+    char name[16];
     char type[64];
     char description[256];
     sigar_net_address_t hwaddr;
@@ -856,7 +852,7 @@ sigar_net_listen_address_get(sigar_t *sigar,
                              sigar_net_address_t *address);
 
 typedef struct {
-    char ifname[MAX_INTERFACE_NAME_LEN];
+    char ifname[16];
     char type[64];
     sigar_net_address_t hwaddr;
     sigar_net_address_t address;
