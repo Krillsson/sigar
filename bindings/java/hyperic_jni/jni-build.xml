@@ -464,7 +464,7 @@
 
         <linkerarg value="/MACHINE:X64" if="jni.arch64"/>
         <linkerarg value="${jni.info.res}" if="jni.info.res"/>
-        <syslibset libs="kernel32,user32,advapi32,ws2_32,netapi32,shell32,pdh,version"/>
+        <syslibset libs="kernel32,user32,advapi32,ws2_32,netapi32,shell32,pdh,version,,psapi"/>
       </linker>
 
       <compiler name="msvc" debug="${jni.debug}" if="win32">
